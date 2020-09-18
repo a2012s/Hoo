@@ -9,6 +9,7 @@ import com.joe.jetpackdemo.common.BaseConstant
 import com.joe.jetpackdemo.common.BaseConstant.IMAGE_MANIPULATION_WORK_NAME
 import com.joe.jetpackdemo.common.BaseConstant.KEY_IMAGE_URI
 import com.joe.jetpackdemo.common.BaseConstant.TAG_OUTPUT
+import com.joe.jetpackdemo.db.AppDataBase.Companion.getInstance
 import com.joe.jetpackdemo.db.repository.UserRepository
 import com.joe.jetpackdemo.utils.AppPrefsUtils
 import com.joe.jetpackdemo.worker.BlurWorker
@@ -16,9 +17,9 @@ import com.joe.jetpackdemo.worker.CleanUpWorker
 import com.joe.jetpackdemo.worker.SaveImageToFileWorker
 import kotlinx.coroutines.launch
 
-class MeModel(val userRepository: UserRepository) : ViewModel() {
-    internal var imageUri: Uri? = null
-    internal var outPutUri: Uri? = null
+class MeModel(private val userRepository: UserRepository) : ViewModel() {
+    private var imageUri: Uri? = null
+    private var outPutUri: Uri? = null
     internal val outPutWorkInfos: LiveData<List<WorkInfo>>
     private val workManager = WorkManager.getInstance()
     val user = userRepository.findUserById(AppPrefsUtils.getLong(BaseConstant.SP_USER_ID))

@@ -13,9 +13,9 @@ import com.joe.jetpackdemo.R
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var bottomNavigationView: BottomNavigationView
-    lateinit var mToolbar:Toolbar
-    lateinit var mCamera:ImageView
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var mToolbar:Toolbar
+    private lateinit var mCamera:ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

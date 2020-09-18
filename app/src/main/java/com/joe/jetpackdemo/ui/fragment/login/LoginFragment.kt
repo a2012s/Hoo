@@ -77,12 +77,12 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.btnLogin.setOnClickListener {
-            loginModel.login()?.observe(this, Observer { user ->
+            loginModel.login()?.observe(viewLifecycleOwner, Observer { user ->
                 user?.let {
                     AppPrefsUtils.putLong(BaseConstant.SP_USER_ID, it.id)
                     AppPrefsUtils.putString(BaseConstant.SP_USER_NAME, it.account)
                     val intent = Intent(context, MainActivity::class.java)
-                    context!!.startActivity(intent)
+                    requireContext().startActivity(intent)
                     Toast.makeText(context, "登录成功！", Toast.LENGTH_SHORT).show()
                 }
             })
@@ -99,7 +99,7 @@ class LoginFragment : Fragment() {
             val str = withContext(Dispatchers.IO) {
                 loginModel.onFirstLaunch()
             }
-            Toast.makeText(context!!,str,Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),str,Toast.LENGTH_SHORT).show()
             AppPrefsUtils.putBoolean(BaseConstant.IS_FIRST_LAUNCH,false)
         }
     }

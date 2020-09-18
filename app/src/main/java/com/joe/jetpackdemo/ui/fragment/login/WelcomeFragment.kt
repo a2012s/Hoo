@@ -35,6 +35,8 @@ class WelcomeFragment : Fragment() {
         btnLogin = view.findViewById(R.id.btn_login)
         btnRegister = view.findViewById(R.id.btn_register)
 
+        val mNavController = findNavController()
+
         btnLogin.setOnClickListener {
             // 设置动画参数
             val navOption = navOptions {
@@ -49,8 +51,8 @@ class WelcomeFragment : Fragment() {
             val name = AppPrefsUtils.getString(BaseConstant.SP_USER_NAME)
             // Navigation 传递参数
             val bundle = Bundle()
-            bundle.putString(BaseConstant.ARGS_NAME,name)
-            findNavController().navigate(R.id.login, bundle,navOption)
+            bundle.putString(BaseConstant.ARGS_NAME, name)
+            mNavController.navigate(R.id.login, bundle, navOption)
         }
 
         btnRegister.setOnClickListener {
@@ -58,7 +60,7 @@ class WelcomeFragment : Fragment() {
             val action = WelcomeFragmentDirections
                 .actionWelcomeToRegister()
                 .setEMAIL("TeaOf1995@Gamil.com")
-            findNavController().navigate(action)
+            mNavController.navigate(action)
         }
     }
 
