@@ -77,7 +77,7 @@ class MeFragment : Fragment() {
         binding.model = model
 
         // 任务状态的观测
-        model.outPutWorkInfos.observe(this, Observer {
+        model.outPutWorkInfos.observe(viewLifecycleOwner, Observer {
             if (it.isNullOrEmpty())
                 return@Observer
 

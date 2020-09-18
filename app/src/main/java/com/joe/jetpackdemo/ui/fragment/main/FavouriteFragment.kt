@@ -33,7 +33,7 @@ class FavouriteFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FavouriteFragmentBinding = FavouriteFragmentBinding.inflate(inflater, container, false)
         context ?: return binding.root
-        val adapter = FavouriteAdapter(context!!)
+        val adapter = FavouriteAdapter(requireContext())
         binding.recycler.adapter = adapter
         onSubscribeUi(adapter, binding)
         return binding.root

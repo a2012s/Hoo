@@ -60,7 +60,7 @@ class ShoeFragment : Fragment() {
     ): View? {
         val binding: ShoeFragmentBinding = ShoeFragmentBinding.inflate(inflater, container, false)
         context ?: return binding.root
-        val adapter = ShoeAdapter(context!!)
+        val adapter = ShoeAdapter(requireContext())
         binding.recycler.adapter = adapter
         onSubscribeUi(adapter, binding)
 
@@ -111,7 +111,7 @@ class ShoeFragment : Fragment() {
         mShoe.post {
             width = mShoe.measuredWidth
         }
-        radius = UiUtils.dp2px(context!!, 80f)
+        radius = UiUtils.dp2px(requireContext(), 80f)
     }
 
     /**
